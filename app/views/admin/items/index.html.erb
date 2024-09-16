@@ -1,0 +1,22 @@
+<h2>商品一覧</h2>
+<%= link_to new_admin_item_path do %>
+  <i class="fa-solid fa-plus"></i>
+<% end %>
+
+<table>
+  <tr>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+    <th>ジャンル</th>
+    <th>ステータス</th>
+  </tr>
+  <% @items.each do |item| %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><%= item.genre_id %></td>
+    <td><%= item.is_active %></td>
+  </tr>
+</table>
