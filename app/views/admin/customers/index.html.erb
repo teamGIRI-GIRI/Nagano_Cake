@@ -19,7 +19,7 @@
               <td><%= link_to customer.last_name customer.first_name, admin_customer_path(customer.id) %></td>
               <td><%= customer.email %></td>
               <td>
-                <% if @customer.is_active %>
+                <% if customer.is_active %>
                   有効
                 <% else %>
                   退会
@@ -35,3 +35,4 @@
 
 
 <%= paginate @customers %>
+

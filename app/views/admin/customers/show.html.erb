@@ -1,0 +1,60 @@
+<div class= "container">
+  <div class = "row">
+    <div class = "col-sm-10 px-sm-0 mx-auto">
+      <h3>
+        <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
+      </h3>
+
+      <table class='table'>
+        <tr>
+          <td>会員ID</td>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td><%= @customer.last_name %>  <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= @customer.last_name_kana %>  <%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= @customer.post_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @customer.tellphone_number %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <% if customer.is_active %>
+              有効
+            <% else %>
+              退会
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1"></td>
+          <td>
+            <%= link_to '編集', edit_admin_customer_path(@customer), class: "btn btn-primary" %>
+          </td>
+          <td>
+            <!--adminの会員の注文履歴一覧のurlが設定されていないため、暫定的に異なるurl入力してあります。url設定後変更必要-->
+            <%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer), class: "btn btn-danger" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
