@@ -1,0 +1,98 @@
+<div class= "container">
+  <div class = "row">
+    <div class = "col-sm-10 px-sm-0 mx-auto">
+      <h3>
+        <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
+      </h3>
+      
+      <table class='table'>
+      <%= form_with model:@customer, local:true do |f| %>
+        <tr>
+          <td>会員ID</td>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, class: "form-control last_name" %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, class: "form-control last_name" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :last_name_kana %>
+              <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <%= f.label :first_name_kana %>
+              <%= f.text_field :first_name_kana, class: "form-control last_name_kana" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :post_code %>
+              <%= f.text_field :post_code, class: "form-control post_code" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :address %>
+              <%= f.text_field :address, class: "form-control address" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :tellphone_numbe %>
+              <%= f.text_field :tellphone_numbe, class: "form-control tellphone_numbe" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.text_field :email, class: "form-control email" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <!--有効か退会かの選択-->
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1"></td>
+          <td>
+            <div class="form-group">
+              <%= f.submit "変更を保存" class: "btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
