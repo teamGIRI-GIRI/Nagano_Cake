@@ -1,0 +1,28 @@
+<div class="text-center", col-lg-8>
+  <h3 class="bg-success text-white">会員一覧</h3>
+</div>
+
+  <tabel class="d-flex justify-content-center">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.last_name customer.first_name, admin_customer_path(customer.id) %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.is_active %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </tabel>
+
+
+<%= paginate @customers %>
