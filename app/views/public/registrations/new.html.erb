@@ -58,12 +58,16 @@
            <em>(<%= @minimum_password_length %>文字以上)</em>
            <% end %>
           </div>
-           <%= f.password_field :encrypted_password, autocomplete: "encrypted_password" %>
+          <div class="col-lg-3">
+           <%= f.password_field :encrypted_password %>
+          </div>
         </div>
 
         <div class = "row">
           <div class="col-lg-3">パスワード(確認用)</div>
-          <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password_confirmation" %>
+          <div class="col-lg-3">
+            <%= f.password_field :password_confirmation %>
+          </div>
         </div>
 
       <div class="actions">
