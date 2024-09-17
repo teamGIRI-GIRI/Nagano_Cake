@@ -6,7 +6,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
+      t.string :password_confirmation, null: false, default: ""
+      
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -38,7 +39,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :address, null: false, default: ""
       t.string :tellphone_number, null: false, default: ""
       t.boolean :is_active, null: false, default: true
-      
+
       t.timestamps null: false
     end
 
