@@ -1,13 +1,24 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+
 <div class= "container">
   <div class = "row">
     <div class = "mx-auto">
 
       <div style="text-align:center">
-        <h1>About</h1>
+        <h1 class="about-title">About</h1>
       </div>
 
       <div style="text-align:center">
-        <h4>
+        <h4 class="about-text">
           ながのCAKEは全国発送可能なケーキ屋さんです。<br>
           お子様からお年寄りの方までお召し上がりいただけるよう、<br>
           様々なバリエーションをご用意しております。<br>
@@ -22,6 +33,8 @@
     </div>
   </div>
 </div>
+
+</html>
 
 
 
