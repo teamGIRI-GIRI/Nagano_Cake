@@ -1,3 +1,24 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.item-index-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.item-name .item-price {
+  font-weight: bold;
+}
+
+tbody {
+  display: flex;
+  flex-wrap: wrap;
+}
