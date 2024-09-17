@@ -1,10 +1,21 @@
+<% if @customer.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@customer.errors.count, "error") %> prohibited this obj from being saved:</h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class= "container">
   <div class = "row">
     <div class = "col-sm-10 px-sm-0 mx-auto">
       <h3>
         <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
       </h3>
-      
+
       <table class='table'>
       <%= form_with model:@customer, local:true do |f| %>
         <tr>
@@ -80,7 +91,13 @@
         <tr>
           <td>会員ステータス</td>
           <td>
-            <!--有効か退会かの選択-->
+            <!--有効か退会かの2択をラジオボタンで表示-->
+            <%= form_with(model: @customer, local: true) do |form| %>
+              <%= form.radio_button :is_avtive, :ture %>
+              <%= form.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+              <%= form.radio_button :is_avtive, :false %>
+              <%= form.label :is_active, "退会", {value: :false, style: "display: inline-block;"} %>
+            <% end %>
           </td>
         </tr>
         <tr>

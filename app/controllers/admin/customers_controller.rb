@@ -15,8 +15,8 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      # 変更完了後の遷移先は適宜変更
-      redirect_to edit_admin_customer_path, notice: "会員情報が更新"
+      # 変更完了後は会員詳細画面に遷移
+      redirect_to admin_customer_path, notice: "会員情報が更新されました。"
     else
       render "edit"
     end

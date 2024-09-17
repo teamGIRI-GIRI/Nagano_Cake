@@ -50,8 +50,8 @@
             <%= link_to '編集', edit_admin_customer_path(@customer), class: "btn btn-primary" %>
           </td>
           <td>
-            <!--adminの会員の注文履歴一覧のurlが設定されていないため、暫定的に異なるurl入力してあります。url設定後変更必要-->
-            <%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer), class: "btn btn-danger" %>
+            <!--注文履歴一覧ボタンを押すと管理者トップページに遷移-->
+            <%= link_to '注文履歴一覧を見る', admin_top_path, class: "btn btn-danger" %>
           </td>
         </tr>
       </table>
