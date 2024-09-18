@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+         
   has_many :orders
   has_many :cart_items
   has_many :addresses
@@ -18,4 +18,6 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :is_avtive, presence: true
   
+
+
 end

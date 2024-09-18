@@ -7,18 +7,54 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+// 以下、index
 .item-index-title {
   margin-top: 50px;
   margin-bottom: 30px;
   font-weight: bold;
 }
 
-.item-name .item-price {
+.index-item-name {
+  font-size: 20px;
   font-weight: bold;
 }
 
-tbody {
+.index-item-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item-content {
   display: flex;
   flex-wrap: wrap;
+}
+
+.item-box {
+  margin: 10px;
+}
+
+.pagenation {
+  justify-content: center
+}
+
+
+// 以下、show
+.container {
+  margin: 100px;
+}
+
+.show-item-name {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.item-description {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.show-item-price {
+  font-size: 25px;
+  font-weight: bold;
 }

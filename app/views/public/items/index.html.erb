@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
   <!--ジャンル検索は任意-->
   <!--<div class='container'>-->
   <!--  <div class='row'>-->
@@ -30,17 +30,30 @@
       <div class="col-sm-10 px-sm-0 mx-auto">
         <!--商品件数をカウントしてXに代入する-->
         <h2 class="item-index-title">商品一覧(全X件)</h2>
-          <tbody>
+          <div class="item-content">
             <% @items.each do |item| %>
-              <tr><%= image_tag item.get_item_image(200, 100) %></tr>
-              <tr class="item-name"><%= item.name %></tr>
-              <tr class="item-price"><%= item.price %></tr>
+              <tabel>
+                <div class="item-box">
+                  <tr><%= link_to item_path(item) do %>
+                    <%= image_tag item.get_item_image(300, 200) %>
+                    <div class="index-item-name"><%= item.name %></div>
+                    <% end %>
+                  </tr>
+                  <div class="index-item-price">￥<%= item.price %></div>
+                </div>
+              </tabel>
             <% end %>
-          </tbody>
+          </div>
+          <div style="text-align:center">
+            <div class="pagenation">
+              <%= paginate @items %>
+            </div>
+          </div>
       </div>
     </div>
   </div>
 
+
 </html>
 
-<%= paginate @items %>
+
