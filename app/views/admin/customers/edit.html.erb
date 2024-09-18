@@ -17,7 +17,7 @@
       </h3>
 
       <table class='table'>
-      <%= form_with model:@customer, local:true do |f| %>
+      <%= form_with model:@customer, url: admin_customer_path(@customer), local:true do |f| %>
         <tr>
           <td>会員ID</td>
           <td><%= @customer.id %></td>
@@ -26,13 +26,11 @@
           <td>氏名</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :last_name %>-->
               <%= f.text_field :last_name, class: "form-control last_name" %>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :first_name %>-->
               <%= f.text_field :first_name, class: "form-control last_name" %>
             </div>
           </td>
@@ -41,13 +39,11 @@
           <td>フリガナ</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :last_name_kana %>-->
               <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :first_name_kana %>-->
               <%= f.text_field :first_name_kana, class: "form-control last_name_kana" %>
             </div>
           </td>
@@ -56,7 +52,6 @@
           <td>郵便番号</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :postal_code %>-->
               <%= f.text_field :postal_code, class: "form-control postal_code" %>
             </div>
           </td>
@@ -65,7 +60,6 @@
           <td>住所</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :address %>-->
               <%= f.text_field :address, class: "form-control address" %>
             </div>
           </td>
@@ -74,7 +68,6 @@
           <td>電話番号</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :tellphone_numbe %>-->
               <%= f.text_field :tellphone_number, class: "form-control tellphone_numbe" %>
             </div>
           </td>
@@ -83,7 +76,6 @@
           <td>メールアドレス</td>
           <td>
             <div class="form-group">
-              <!--<%= f.label :email %>-->
               <%= f.text_field :email, class: "form-control email" %>
             </div>
           </td>
@@ -91,13 +83,10 @@
         <tr>
           <td>会員ステータス</td>
           <td>
-            <!--有効か退会かの2択をラジオボタンで表示-->
-            <%= form_with(model: @customer, local: true) do |form| %>
-              <%= form.radio_button :is_avtive, :ture %>
-              <%= form.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
-              <%= form.radio_button :is_avtive, :false %>
-              <%= form.label :is_active, "退会", {value: :false, style: "display: inline-block;"} %>
-            <% end %>
+            <div class="field">
+              <%= f.radio_button :is_active, 'true' %> 有効
+              <%= f.radio_button :is_active, 'false' %> 退会
+            </div>
           </td>
         </tr>
         <tr>
