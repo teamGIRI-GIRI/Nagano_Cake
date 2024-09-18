@@ -27,7 +27,7 @@
       </div>
       <div class="row-12">
         <span class="col-4">ジャンル</span>
-        <span class="col-8"><%= @item.genre_id.name %></span>
+        <span class="col-8"><%= @item.genre.name %></span>
       </div>
       <div class="row-12">
         <span class="col-4">税込価格<br>(税抜価格)</span>
@@ -35,7 +35,7 @@
       </div>
       <div class="row-12">
         <span class="col-4">販売ステータス</span>
-        <% if item.is_active %>
+        <% if @item.is_active %>
           <span class="col-8 text-success">販売中</span>
         <% else %>
           <span class="col-8 text-secondary">販売停止中</span>

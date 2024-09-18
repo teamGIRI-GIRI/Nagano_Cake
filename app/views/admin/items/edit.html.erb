@@ -8,7 +8,7 @@
 
   <div class="row">
     <div class="col-4 offset-4">
-      <%= form_with model: @item do |f| %>
+      <%= form_with model: @item, url: "/admin/items/#{@item.id}", method: :patch do |f| %>
         <div class="form-group row-12 mb-3">
           <%= f.label :商品画像, class: "col-4" %>
           <%= f.file_field :item_image, class: "col-7 pl-0" %>
