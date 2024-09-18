@@ -7,7 +7,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div class= "container">
+  <div class= "item-show-container">
     <div class = "row">
       <div class = "col-md-5">
         <%= image_tag @item.get_item_image(500, 350) %>
@@ -19,8 +19,8 @@
           <div class="show-item-price">￥<%= @item.price %></div>
           <%= form_with model: @cart_item do |f| %>
             <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
-            <%= f.submit 'カートに入れる'%>
-        <% end %>
+            <%= f.submit 'カートに入れる', class: "btn btn-success"%>
+          <% end %>
           </div>
 
 

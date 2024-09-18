@@ -13,7 +13,7 @@
   <div class = "row">
     <div class = "col-sm-10 px-sm-0 mx-auto">
       <h3>
-        <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
+        <%= @customer.last_name %> <%=@customer.first_name %>さんの会員情報編集
       </h3>
 
       <table class='table'>
@@ -26,13 +26,13 @@
           <td>氏名</td>
           <td>
             <div class="form-group">
-              <%= f.label :last_name %>
+              <!--<%= f.label :last_name %>-->
               <%= f.text_field :last_name, class: "form-control last_name" %>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <%= f.label :first_name %>
+              <!--<%= f.label :first_name %>-->
               <%= f.text_field :first_name, class: "form-control last_name" %>
             </div>
           </td>
@@ -41,13 +41,13 @@
           <td>フリガナ</td>
           <td>
             <div class="form-group">
-              <%= f.label :last_name_kana %>
+              <!--<%= f.label :last_name_kana %>-->
               <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <%= f.label :first_name_kana %>
+              <!--<%= f.label :first_name_kana %>-->
               <%= f.text_field :first_name_kana, class: "form-control last_name_kana" %>
             </div>
           </td>
@@ -56,7 +56,7 @@
           <td>郵便番号</td>
           <td>
             <div class="form-group">
-              <%= f.label :postal_code %>
+              <!--<%= f.label :postal_code %>-->
               <%= f.text_field :postal_code, class: "form-control postal_code" %>
             </div>
           </td>
@@ -65,7 +65,7 @@
           <td>住所</td>
           <td>
             <div class="form-group">
-              <%= f.label :address %>
+              <!--<%= f.label :address %>-->
               <%= f.text_field :address, class: "form-control address" %>
             </div>
           </td>
@@ -74,8 +74,8 @@
           <td>電話番号</td>
           <td>
             <div class="form-group">
-              <%= f.label :tellphone_numbe %>
-              <%= f.text_field :tellphone_numbe, class: "form-control tellphone_numbe" %>
+              <!--<%= f.label :tellphone_numbe %>-->
+              <%= f.text_field :tellphone_number, class: "form-control tellphone_numbe" %>
             </div>
           </td>
         </tr>
@@ -83,7 +83,7 @@
           <td>メールアドレス</td>
           <td>
             <div class="form-group">
-              <%= f.label :email %>
+              <!--<%= f.label :email %>-->
               <%= f.text_field :email, class: "form-control email" %>
             </div>
           </td>
@@ -104,7 +104,7 @@
           <td colspan="1"></td>
           <td>
             <div class="form-group">
-              <%= f.submit "変更を保存" class: "btn btn-success" %>
+              <%= f.submit "変更を保存", class: "btn btn-success" %>
             </div>
           </td>
         </tr>

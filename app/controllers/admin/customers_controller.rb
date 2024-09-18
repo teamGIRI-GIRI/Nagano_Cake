@@ -16,7 +16,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       # 変更完了後は会員詳細画面に遷移
-      redirect_to admin_customer_path, notice: "会員情報が更新されました。"
+      redirect_to admin_customer_path(@customer), notice: "会員情報が更新されました。"
     else
       render "edit"
     end
@@ -26,7 +26,7 @@ class Admin::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana,
-    :first_name_kana, :post_code, :address, :tellphone_number, :email, :is_active)
+    :first_name_kana, :postal_code, :address, :tellphone_number, :email, :is_active)
   end
 
 end
