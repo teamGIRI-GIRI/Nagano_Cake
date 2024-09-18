@@ -4,7 +4,7 @@
 
       <br>
       <br>
-      <h5 style="background-color: #ECECEC;">　　ジャンル一覧・追加　　</h5>
+      <h5 style="background-color: #ECECEC;">　ジャンル一覧・追加　</h5>
       <br>
       <br>
 
@@ -17,6 +17,7 @@
     <div class="col-2">
       <h6><strong>ジャンル名</strong></h6>
     </div>
+    <!-- ジャンル登録 -->
     <div class="col-10">
       <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
         <%= f.text_field :name, placeholder: "ジャンル名" %>　　　
@@ -32,7 +33,8 @@
   <div class="row">
     <div class="col-xs-6">
       
-      <table class = "table"><!--　ジャンル一覧のテーブル　-->
+      <!--　ジャンル一覧のテーブル　-->
+      <table class = "table">
         <thead style="background-color: #ECECEC;">
           <th>ジャンル</th>
           <th></th>
@@ -46,17 +48,18 @@
             </td>
           </tr>
         <% end %>
-<style>
-  table.table {
-    border-collapse: collapse;
-  }
-  table.table td, table.table th {
-    border-bottom: 1px solid #dddddd;
-  }
-  table.table tr:last-child td, table.table tr:last-child th {
-    border-bottom: 1px solid #dddddd;
-  }
-</style>
+        <!-- styleで、ジャンルのテーブルに灰色の横線を付けています -->
+        <style>
+          table.table {
+            border-collapse: collapse;
+          }
+          table.table td, table.table th {
+            border-bottom: 1px solid #dddddd;
+          }
+          table.table tr:last-child td, table.table tr:last-child th {
+            border-bottom: 1px solid #dddddd;
+          }
+        </style>
       </table>
       
     </div>
