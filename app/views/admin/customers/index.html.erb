@@ -1,37 +1,47 @@
-<div class= "container">
-  <div class = "row">
-    <div class = "col-sm-10 px-sm-0 mx-auto">
-     <h2>会員一覧</h2>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="table-active">会員ID</th>
-            <th class="table-active">氏名</th>
-            <th class="table-active">メールアドレス</th>
-            <th class="table-active">ステータス</th>
-          </tr>
-        </thead>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-        <tbody>
-          <% @customers.each do |customer| %>
+  <div class= "container">
+    <div class = "row">
+      <div class = "col-sm-10 px-sm-0 mx-auto">
+       <h2 class="customer-index-title", style: "background-color: #00ced1">会員一覧</h2>
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <td><%= customer.id %></td>
-              <td><%= link_to customer.last_name customer.first_name, admin_customer_path(customer.id) %></td>
-              <td><%= customer.email %></td>
-              <td>
-                <% if customer.is_active %>
-                  有効
-                <% else %>
-                  退会
-                <% end %>
-              </td>
+              <th class="table-active">会員ID</th>
+              <th class="table-active">氏名</th>
+              <th class="table-active">メールアドレス</th>
+              <th class="table-active">ステータス</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.last_name customer.first_name, admin_customer_path(customer.id) %></td>
+                <td><%= customer.email %></td>
+                <td>
+                  <% if customer.is_active %>
+                    有効
+                  <% else %>
+                    退会
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+</html>
 
 
 <%= paginate @customers %>
