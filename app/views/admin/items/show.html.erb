@@ -1,0 +1,55 @@
+<div class="container-fruid">
+
+  <div class="row m-4">
+    <div class="col-3 offset-3">
+      <h4 class="bg-light">商品詳細</h4>
+    </div>
+  </div>
+
+  <div class="row m-3">
+    <div class="col-6 offset-3">
+      <h6 class="text-success"><%= notice %></h6>
+    </div>
+  </div>
+
+  <div class="row-12">
+    <div class="col-3 offset-2">
+      <%= image_tag @item.get_item_image(400, 300) %>
+    </div>
+    <div class="col-4 offset-1">
+      <div class="row-12">
+        <span class="col-4">商品名</span>
+        <span class="col-8"><%= @item.name %></span>
+      </div>
+      <div class="row-12">
+        <span class="col-4">商品説明</span>
+        <span class="col-8"><%= @item.description %></span>
+      </div>
+      <div class="row-12">
+        <span class="col-4">ジャンル</span>
+        <span class="col-8"><%= @item.genre_id.name %></span>
+      </div>
+      <div class="row-12">
+        <span class="col-4">税込価格<br>(税抜価格)</span>
+        <span class="col-8"><%= @price_including_tax %> (<%= @item.price %>) 円</span>
+      </div>
+      <div class="row-12">
+        <span class="col-4">販売ステータス</span>
+        <% if item.is_active %>
+          <span class="col-8 text-success">販売中</span>
+        <% else %>
+          <span class="col-8 text-secondary">販売停止中</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2 offset-5">
+      <%= link_to edit_admin_item_path(@item.id) do %>
+        <button class="btn btn-success">編集する</button>
+      <% end %>
+    </div>
+  </div>
+
+</div>
