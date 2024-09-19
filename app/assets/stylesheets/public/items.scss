@@ -11,7 +11,11 @@
 .item-index-title {
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+.item-index-title span {
   font-weight: bold;
+  font-size: 35px;
 }
 
 .index-item-name {
@@ -33,8 +37,8 @@
   margin: 10px;
 }
 
-.pagenation {
-  justify-content: center
+.pagination {
+  justify-content: center;
 }
 
 

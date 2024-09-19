@@ -1,10 +1,24 @@
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-3 offset-1">
+        <!--<br>-->
+        <br>
+        <h4 class="customer-index-title", style="background-color: #ECECEC;">
+          <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
+        </h4>
+        <br>
+        <!--<br>-->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 <div class= "container">
   <div class = "row">
     <div class = "col-sm-10 px-sm-0 mx-auto">
-      <h3>
-        <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
-      </h3>
-
       <table class='table'>
         <tr>
           <td>会員ID</td>
@@ -38,20 +52,20 @@
           <td>会員ステータス</td>
           <td>
             <% if @customer.is_active %>
-              有効
+              <strong class="text-success">有効</strong>
             <% else %>
-              退会
+              <strong class="text-secondary">退会</strong>
             <% end %>
           </td>
         </tr>
         <tr>
           <td colspan="1"></td>
           <td>
-            <%= link_to '編集', edit_admin_customer_path(@customer), class: "btn btn-primary" %>
+            <%= link_to '編集', edit_admin_customer_path(@customer), class: "btn btn-success" %>
           </td>
           <td>
             <!--注文履歴一覧ボタンを押すと管理者トップページに遷移-->
-            <%= link_to '注文履歴一覧を見る', admin_top_path, class: "btn btn-danger" %>
+            <%= link_to '注文履歴一覧を見る', admin_top_path, class: "btn btn-primary" %>
           </td>
         </tr>
       </table>
