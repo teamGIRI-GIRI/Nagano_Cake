@@ -15,6 +15,9 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
 
   private
 
