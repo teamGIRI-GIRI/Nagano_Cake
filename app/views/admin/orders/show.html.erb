@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mt-5">
+    <h4 class ="col-3 table-secondary text-center">注文履歴詳細</h4><br>
+      <table table = "table offset-2">
+        <tbody>
+        <tr>
+          <th>購入者</th>
+          <td>
+            <%= link_to admin_customer_path do %>
+             <%= @order.customer.last_name + @order.customer.first_name %>
+            <% end %>
+          </td>
+        </tr>
+  
+        <tr>
+          <th>配送先</th>
+          <td>
+            
+          </td>
+        </tr>
+  
+        <tr>
+          <th>支払方法</th>
+          <td>
+            
+          </td>
+        </tr>
+  
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+           <%= form_for (@order), url: order_path(@order) do |f| %>
+           <%= f.select :order_status, Order.order_statuses.keys.to_a %>
+           <%= f.submit "更新", class: "btn btn-success" %>
+           <% end %>
+          </td>
+        </tr>
+  
+        </tbody>
+      </table>
+  </div>
+</div>
