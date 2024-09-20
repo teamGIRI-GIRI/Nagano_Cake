@@ -13,14 +13,12 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_item_path(@item.id), notice: "商品が正常に登録されました。"
     else
-      @price_including_tax = @item.price * 1.1
       render 'show'
     end
   end
 
   def show
     @item = Item.find(params[:id])
-    @price_including_tax = @item.price * 1.1
   end
 
   def edit
@@ -33,7 +31,6 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id), notice: "変更が正常に保存されました。"
     else
-      @price_including_tax = @item.price * 1.1
       render 'show'
     end
   end
