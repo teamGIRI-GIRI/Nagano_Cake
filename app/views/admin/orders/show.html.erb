@@ -1,7 +1,9 @@
+<% if @order %>
 <div class="container">
   <div class="row mt-5">
     <h4 class ="col-3 table-secondary text-center">注文履歴詳細</h4><br>
-      <table table = "table offset-2">
+    <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+      <table table = "table offset-2 mt-5">
         <tbody>
         <tr>
           <th>購入者</th>
@@ -11,21 +13,30 @@
             <% end %>
           </td>
         </tr>
-  
+
+        <tr>
+          <th>注文日</th>
+          <td>
+            <%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+          </td>
+        </tr>
+
         <tr>
           <th>配送先</th>
           <td>
-            
+            〒<%= @order.postal_code %>
+              <%= @order.address %>
+              <%= @oreder.name %>
           </td>
         </tr>
-  
+
         <tr>
           <th>支払方法</th>
           <td>
-            
+            <%= @order.payment_method %>
           </td>
         </tr>
-  
+
         <tr>
           <th>注文ステータス</th>
           <td>
@@ -35,8 +46,27 @@
            <% end %>
           </td>
         </tr>
-  
+
         </tbody>
       </table>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-8">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="table-active">商品名</th>
+              <th class="table-active">単価(税込)</th>
+              <th class="table-active">数量</th>
+              <th class="table-active">小計</th>
+              <th class="table-active">製作ステータス</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+<% else %>
+  <p>指定された注文は存在しません。</p>
+<% end %>
