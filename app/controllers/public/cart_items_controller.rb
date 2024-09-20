@@ -1,26 +1,33 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    # どの会員のた―都内アイテムか限定する必要がある
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    # @cart_item.customer_id = current_customer.id
-    if @cart_item.save
+    @cart_items = current_customer.cart_items.all
+    if cart_item_params[:amount] != ""
+      if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:id].to_i }
+        @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:id].to_i)
+        @cart_item__already.amount += params[:cart_item][:amount].to_i
+        @cart_item_already.save
+        flash[:success] = "カートに商品が登録されました。"
         redirect_to cart_items_path
-    else
-      redirect_to root_path
+      else
+        @cart_item = CartItem.new(cart_item_params)
+        @cart_item.save
+        flash[:success] = "カートに商品が登録されました。"
+        redirect_to cart_items_path
+      end
     end
   end
-  
+
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to cart_items_path 
-  end 
+    redirect_to cart_items_path
+  end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
