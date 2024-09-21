@@ -19,6 +19,8 @@ class Customer < ApplicationRecord
   validates :is_active, inclusion: { in: [true, false] }
   # validates :is_active, presence: true
 
-
-
+  def address_display
+    "〒" + postal_code + " " + address + " " + last_name + " " + first_name
+  end
 end
+
