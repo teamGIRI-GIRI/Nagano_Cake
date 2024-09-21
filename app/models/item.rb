@@ -1,9 +1,11 @@
 class Item < ApplicationRecord
+
+  has_one_attached :item_image
+
   has_many :cart_items  #"dependent: :destroy"の記載は商品の消去動作がないためつけていません
   has_many :order_details
   belongs_to :genre
 
-  has_one_attached :item_image
 
   validates :name, presence: true, length: {maximum: 100}
   validates :description, presence: true, length: {maximum: 500}
@@ -23,3 +25,4 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 end
+
