@@ -8,10 +8,10 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_items = current_customer.cart_items.all
     if cart_item_params[:amount] != ""
-      if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:id].to_i }
-        @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:id].to_i)
-        @cart_item__already.amount += params[:cart_item][:amount].to_i
-        @cart_item_already.save
+      if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:item_id].to_i }
+        @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:item_id])
+        @cart_item_already.amount += params[:cart_item][:amount].to_i
+        @cart_item_already.update
         flash[:success] = "カートに商品が登録されました。"
         redirect_to cart_items_path
       else
