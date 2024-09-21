@@ -43,8 +43,9 @@
           </tr>
         <% end %>
       </tbody>
-      <%= paginate @items %>
     </table>
   </div>
-
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @items %>
+  </div>
 </div>
