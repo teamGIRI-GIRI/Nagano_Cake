@@ -1,8 +1,8 @@
 <div class="container-fruid">
 
-  <div class="row m-3">
-    <div class="col-2 offset-2 d-inline-block my-2">
-      <h3 class="bg-light px-2">商品一覧</h3>
+  <div class="row m-4">
+    <div class="col-auto offset-2 d-inline-block my-2">
+      <h4 class="bg-info px-4">商品一覧</h4>
     </div>
     <div class="col-1 offset-5 d-flex">
       <%= link_to new_admin_item_path, class: "mx-auto my-2" do %>
@@ -16,9 +16,9 @@
       <thead class="table-secondary">
         <tr>
           <th class="col-2">商品ID</th>
-          <th class="col-3">商品名</th>
+          <th class="col-4">商品名</th>
           <th class="col-2">税抜価格</th>
-          <th class="col-3">ジャンル</th>
+          <th class="col-2">ジャンル</th>
           <th class="col-2">ステータス</th>
         </tr>
       </thead>
@@ -32,7 +32,7 @@
               <% end %>
             </td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <td>
               <% if item.is_active %>
                 <p class="text-success">販売中</p>
@@ -43,8 +43,9 @@
           </tr>
         <% end %>
       </tbody>
-      <%= paginate @items %>
     </table>
   </div>
-
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @items %>
+  </div>
 </div>
