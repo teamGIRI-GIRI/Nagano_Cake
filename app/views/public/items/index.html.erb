@@ -27,8 +27,9 @@
   <!--      </table>-->
   <!--    </div>-->
 
-
-      <div class="col-sm-10 px-sm-0 mx-auto">
+  <div class= "container">
+    <div class = "row">
+      <div class="mx-auto">
         <!--商品件数をカウントしてXに代入する-->
         <h4 class="item-index-title"><span>商品一覧</span>(全<%= @items.count %>件)</h4>
           <div class="item-content">
@@ -36,7 +37,7 @@
               <tabel>
                 <div class="item-box">
                   <tr><%= link_to item_path(item) do %>
-                    <%= image_tag item.get_item_image(300, 200) %>
+                    <%= image_tag item.get_item_image(260, 200) %>
                     <div class="index-item-name"><%= item.name %></div>
                     <% end %>
                   </tr>
@@ -49,4 +50,6 @@
       　　    <%= paginate @item %>
       　　　</div>
       </div>
+    </div>
+  </div>
 </html>
