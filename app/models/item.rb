@@ -1,9 +1,11 @@
 class Item < ApplicationRecord
+
+  has_one_attached :item_image
+
   has_many :cart_items  #"dependent: :destroy"の記載は商品の消去動作がないためつけていません
   has_many :order_details
   belongs_to :genre
 
-  has_one_attached :item_image
 
   validates :name, presence: true, length: {maximum: 100}
   validates :description, presence: true, length: {maximum: 500}
@@ -16,6 +18,11 @@ class Item < ApplicationRecord
       file_path = Rails.root.join("app/assets/images/no_image.jpg")
       item_image.attach(io: File.open(file_path), filename: "no_image.jpg", content_type: "image/jpeg")
     end
-    item_image.variant(resize_to_limit: [width, height])
+    item_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def with_tax_price
+    (price * 1.1).floor
   end
 end
+
