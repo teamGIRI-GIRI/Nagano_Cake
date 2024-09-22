@@ -31,7 +31,7 @@
         <tr>
           <th class="pt-2">支払方法</th>
           <td class="pt-2">
-            <%= @order.payment_method %>
+            <%= @order.payment_method_i18n %>
           </td>
         </tr>
 
@@ -39,9 +39,10 @@
           <th class="pt-2">注文ステータス</th>
           <td class="pt-2">
            <%= form_for (@order), url: order_path(@order) do |f| %>
-           <%= f.select :order_status, Order.order_statuses.keys.to_a %>
+           <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
            <%= f.submit "更新", class: "btn btn-success" %>
            <% end %>
+
           </td>
         </tr>
 
@@ -70,7 +71,8 @@
               <td>
                 <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
                 <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
-                <%= f.select :making_status, OrderDetail.making_statuses.keys %>
+                <%#= f.select :making_status, OrderDetail.making_statuses.keys %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                 <%= f.submit "更新", class: "btn btn-success" %>
                 <% end %>
               </td>
@@ -79,22 +81,27 @@
           </tbody>
         </table>
       </div>
-      <div class = "col-4">
-        <table class = "row mt-5">
+        <table class = "row mt-5 gx-5">
           <tr>
-            <th>商品合計</th>
-            <td>円</td>
+            <th class = "h5 p-3"><strong>商品合計</strong></th>
+            <td class = "h5 p-3">
+              <%= @order.total_payment %>円
+            </td>
           </tr>
+
           <tr>
-            <th>送料</th>
-            <td>円</td>
+            <th class = "h5 p-3"><strong>送料</strong></th>
+            <td class = "h5 p-3">
+              <%= @order.shipping_cost %>円
+            </td>
           </tr>
+
           <tr>
-            <th>請求金額合計</th>
-            <td>円</td>
+            <th class = "h5 p-3"><strong>請求金額合計</strong></th>
+            <td class = "h5 p-3">
+              <strong><%= @order.total_payment + @order.shipping_cost %>円</strong>
+            </td>
           </tr>
         </table>
-
-      </div>
     </div>
 </div>

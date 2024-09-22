@@ -3,6 +3,6 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
   belongs_to :order
   
-  enum production_status: {着手不可:0, 製作待ち:1, 製作中:2, 制作完了:3}
+  enum making_status: {not_statable: 0, waiting_for_pdoduction: 1, making: 2, finished: 3}
 
 end
