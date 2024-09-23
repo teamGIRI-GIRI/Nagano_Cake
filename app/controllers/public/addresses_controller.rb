@@ -12,8 +12,8 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path
     else
-      Rails.logger.error @address.errors.full_messages.join(", ") # エラーメッセージをログに出力
-      @addresses = Address.all
+      # Rails.logger.error @address.errors.full_messages.join(", ") # エラーメッセージをログに出力
+      @addresses = current_customer.addresses
       render :index
     end
   end
@@ -25,12 +25,14 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     @address.update(address_params)
+    @addresses = current_customer.addresses
     redirect_to addresses_path
   end
 
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
+    @addresses = current_customer.addresses
     redirect_to addresses_path
   end
 
