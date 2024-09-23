@@ -46,22 +46,39 @@
 
 
 // 以下、show
+.item-show-image {
+  margin-top: 100px;
+  margin-bottom: 30px;
+  float: left;
+}
+
 .item-show-container {
   margin: 100px;
 }
 
 .show-item-name {
+  margin-top: 100px;
   margin-bottom: 20px;
   font-size: 40px;
   font-weight: bold;
 }
 
 .item-description {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 100px;
+}
+
+.show-item-price {
+  margin-bottom: 20px;
+}
+
+.show-item-price span {
   font-size: 30px;
   font-weight: bold;
 }
 
-.show-item-price {
-  font-size: 25px;
-  font-weight: bold;
+.mt-3 {
+  margin-left: 1rem;
+  display: flex;
 }
