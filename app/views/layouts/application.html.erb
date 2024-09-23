@@ -11,7 +11,19 @@
     <script src="https://kit.fontawesome.com/8c365efc17.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header class="border-bottom">
+      <% if admin_signed_in? %>
+        <%= render 'layouts/header_admin' %>
+      <% else %>
+        <%= render 'layouts/header_public' %>
+      <% end %>
+    </header>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+    <footer class="border-top">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
