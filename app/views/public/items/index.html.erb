@@ -30,7 +30,6 @@
   <div class= "container">
     <div class = "row">
       <div class="mx-auto">
-        <!--商品件数をカウントしてXに代入する-->
         <h4 class="item-index-title"><span>商品一覧</span>(全<%= @items.count %>件)</h4>
           <div class="item-content">
             <% @item.each do |item| %>
@@ -46,10 +45,12 @@
               </tabel>
             <% end %>
           </div>
-          <div class="pagination">
-      　　    <%= paginate @item %>
-      　　　</div>
       </div>
     </div>
   </div>
+  
+      <div class="pagination">
+　　    <%= paginate @item %>
+　　　</div>
+　　　
 </html>
