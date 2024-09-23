@@ -26,8 +26,6 @@ class Public::OrdersController < ApplicationController
         @order.address = register_address.address
         @order.name = register_address.name
     end
-
-    render 'public/orders/confirm'
   end
 
   def create
@@ -48,7 +46,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def thanks
-    render 'public/orders/thanks'
   end
 
   def index
