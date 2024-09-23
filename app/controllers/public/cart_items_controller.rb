@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :is_matching_login_customer
 
   def index
     @cart_items = current_customer.cart_items.all
@@ -49,6 +50,14 @@ class Public::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
   end
 
+  def is_matching_login_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_user
+      redirect_to new_customer_session_path, alert: 'アクセス権限がありません。'
+    end
+  end
 
 
 end
+
+
