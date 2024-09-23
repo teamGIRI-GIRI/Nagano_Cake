@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
     @addresses = Address.where(customer_id: current_customer.id)
@@ -52,9 +54,10 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders
   end
-  
+
   def show
     @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private
@@ -62,5 +65,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment)
   end
-  
+
 end

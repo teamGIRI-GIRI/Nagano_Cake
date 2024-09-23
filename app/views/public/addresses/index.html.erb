@@ -42,7 +42,7 @@
       <br>
       <br>
       <table class="table table-bordered">
-        <thead>
+        <thead bgcolor = "#f5f5f5">
           <tr>
             <th>郵便番号</th>
             <th>住所</th>
@@ -62,7 +62,7 @@
               <td>
                 <%= address.name %>
               </td>
-              <td>
+              <td style="text-align: center; vertical-align: middle;">
                 <%= link_to '編集する'.html_safe, edit_address_path(address), class: "btn btn-success btn-sm", style: "font-weight: bold" %>
                 <%= link_to '削除する', address, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm", style: "font-weight: bold" %>
               </td>
