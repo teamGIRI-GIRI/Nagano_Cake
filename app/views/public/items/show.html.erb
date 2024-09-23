@@ -7,23 +7,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div class= "item-show-container">
-    <div class = "row">
-      <div class = "col-md-5">
-        <%= image_tag @item.get_item_image(500, 350) %>
-      </div>
-      <div class='col-md-6 offset-md-1'>
-        <div class="show-item-name"><%= @item.name %></div>
-        <div class="item-description"><%= @item.description %></div>
-        <div class="show-item-price">￥<%= @item.price %></div>
-        <%= form_with model:@cart_item, url: cart_items_path do |f| %>
-          <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.hidden_field :customer_id, :value => current_customer.id %>
-          <%= f.submit 'カートに入れる', class: "btn btn-success"%>
-        <% end %>
+    <div class= "item-show-container">
+      <div class = "row">
+        <div class = "col-md-5">
+          <%= image_tag @item.get_item_image(500, 350) %>
+        </div>
+        <div class='col-md-6 offset-md-1'>
+          <div class="show-item-name"><%= @item.name %></div>
+          <div class="item-description"><%= @item.description %></div>
+          <div class="show-item-price">￥<%= @item.price %></div>
+          <%= form_with model:@cart_item, url: cart_items_path do |f| %>
+            <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.submit 'カートに入れる', class: "btn btn-success"%>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </html>

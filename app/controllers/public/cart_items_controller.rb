@@ -11,7 +11,7 @@ class Public::CartItemsController < ApplicationController
       if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:item_id].to_i }
         @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:item_id])
         @cart_item_already.amount += params[:cart_item][:amount].to_i
-        @cart_item_already.update
+        @cart_item_already.save
         flash[:success] = "カートに商品が登録されました。"
         redirect_to cart_items_path
       else
@@ -36,7 +36,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    CartItem.destroy_all
+    @cart_items = current_customer.cart_items.all
+    @cart_items.destroy_all
+    flash[:danger] = "カート内の商品を全て削除しました"
     redirect_to cart_items_path
   end
 
