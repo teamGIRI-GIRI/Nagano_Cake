@@ -1,7 +1,12 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <div class="container">
   <div class="row justify-content-between">
     <div class="col-sm-10 mx-auto">
     <br>
+    <div class="add-success">
+      <%= flash[:success] %>
+    </div>
     <div class="col-4">
       <h4 class="customer-index-title", style="background-color: #ECECEC; text-align: center">
         ショッピングカート

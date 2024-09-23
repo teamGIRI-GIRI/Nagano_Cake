@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3 offset-1">
-      <!--<br>-->
+      <div class="edit-success">
+        <%= flash[:success] %>
+      </div>
       <br>
       <h4 class="customer-index-title", style="background-color: #ECECEC;">
         <%= @customer.last_name %> <%=@customer.first_name %>さんの会員詳細
       </h4>
       <br>
-      <!--<br>-->
+
     </div>
   </div>
 </div>
