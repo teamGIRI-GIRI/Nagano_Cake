@@ -1,3 +1,67 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// 以下、index
+.item-index-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.item-index-title span {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.index-item-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.index-item-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-box {
+  margin: 10px;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+// 以下、show
+.item-show-container {
+  margin: 100px;
+}
+
+.show-item-name {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.item-description {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.show-item-price {
+  font-size: 25px;
+  font-weight: bold;
+}
