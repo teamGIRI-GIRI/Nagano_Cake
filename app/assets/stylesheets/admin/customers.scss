@@ -2,3 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.table-spacing-show td {
+  padding: 15px;
+  font-size: 15px;
+}
+
+.table-spacing-edit td {
+  padding: 5px;
+}
+
+.table-spacing-edit-button td {
+  padding: 20px 0;
+}
+
+.pagination {
+  justify-content: center;
+}
+

@@ -1,20 +1,9 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
   <div class="container">
     <div class="row">
       <div class="col-xs-3 offset-1">
-        <!--<br>-->
         <br>
         <h4 class="customer-index-title", style="background-color: #ECECEC;">　会員一覧　</h4>
         <br>
-        <!--<br>-->
       </div>
     </div>
   </div>
@@ -24,7 +13,7 @@
   <div class= "container">
     <div class = "row">
       <div class = "col-sm-10 px-sm-0 mx-auto">
-        <table class="table table-bordered">
+        <table class="table">
           <thead>
             <tr>
               <th class="table-active">会員ID</th>
@@ -58,8 +47,19 @@
       </div>
     </div>
   </div>
+
+
+
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <div class="pagination">
+      <%= paginate @customers %>
+    </div>
 </html>
-
-
-<%= paginate @customers %>
-
