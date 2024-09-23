@@ -54,7 +54,7 @@
           <% @addresses.each do |address| %>
             <tr>
               <td>
-                <%= address.postal_code %>
+                <%= address.postal_code.to_s.insert(3, "-") %>
               </td>
               <td>
                 <%= address.address %>
