@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :is_matching_login_customer
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items.all
@@ -8,7 +8,14 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_items = current_customer.cart_items.all
-    if cart_item_params[:amount] != ""
+    amount = cart_item_params[:amount].to_i
+    params[:cart_item][:customer_id] = current_customer.id
+
+    if amount <= 0
+    flash[:alert] = "個数を選択してください。"
+    redirect_to item_path(params[:cart_item][:item_id]) and return
+    end
+    # if cart_item_params[:amount] != ""
       if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:item_id].to_i }
         @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:item_id])
         @cart_item_already.amount += params[:cart_item][:amount].to_i
@@ -21,7 +28,6 @@ class Public::CartItemsController < ApplicationController
         flash[:success] = "カートに商品が登録されました。"
         redirect_to cart_items_path
       end
-    end
   end
 
   def update
@@ -48,13 +54,6 @@ class Public::CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
-  end
-
-  def is_matching_login_customer
-    @customer = Customer.find(params[:id])
-    unless @customer == current_user
-      redirect_to new_customer_session_path, alert: 'アクセス権限がありません。'
-    end
   end
 
 

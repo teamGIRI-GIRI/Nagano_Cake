@@ -1,24 +1,12 @@
-<% if @customer.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@customer.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <div class="container">
     <div class="row">
       <div class="col-xs-3 offset-1">
-        <!--<br>-->
+        <%= render 'layouts/errors', obj: @customer %>
         <br>
         <h4 class="customer-index-title", style="background-color: #ECECEC;">
            <%= @customer.last_name %> <%=@customer.first_name %>さんの会員情報編集
         </h4>
         <br>
-        <!--<br>-->
       </div>
     </div>
   </div>

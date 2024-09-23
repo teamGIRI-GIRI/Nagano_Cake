@@ -24,12 +24,13 @@
               <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
               </div>
               <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <div>
                 <%= f.submit 'カートに入れる', class: "btn btn-lg btn-success"%>
               </div>
             </div>
           <% end %>
+          <div class="item-show-alert">
+            <%= flash[:alert] %>
           </div>
         </div>
       </div>
