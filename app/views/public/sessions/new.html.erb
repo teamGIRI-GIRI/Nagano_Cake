@@ -10,7 +10,7 @@
        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", style: "width: 50%;" %>
      </div>
    </div>
-   
+
    <div class = "row mt-5 justify-content-center">
      <div class = "col-lg-2 offset-3">
        <%= f.label :password, "パスワード" %>
@@ -19,11 +19,11 @@
        <%= f.password_field :password, autocomplete: "current-password", style: "width: 50%;" %>
      </div>
    </div>
-   
+
    <div class = "row">
     <div class = "col-lg-2 offset-3"></div>
      <div class = "col-lg-6 center-block mt-5">
-       <button class="btn btn-primary" type="button">ログイン</button>
+       <%= f.submit "ログイン", class: "btn btn-primary" %>
      </div>
    </div>
   <% end %>
