@@ -16,7 +16,8 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
     if @order.update(status_params)
-      if @order.status.include?("入金確認")
+      if @order.status == "paied"
+
         @order_details.update( making_status: 1)
       end
     flash[:success] = "制作ステータスを変更しました。"

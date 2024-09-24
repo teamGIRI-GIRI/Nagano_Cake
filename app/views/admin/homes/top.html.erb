@@ -25,7 +25,8 @@
           <% end %>
         </tbody>
       </table>
-   <%= paginate @orders %>
+      <div class="pagination">
+        <%= paginate @orders %>
+　　　</div>
   </div>
 </div>
-<%= link_to"log_out", destroy_admin_session_path, method: :delete %>

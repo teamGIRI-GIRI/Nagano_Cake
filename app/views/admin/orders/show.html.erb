@@ -5,7 +5,7 @@
         <tr>
           <th class="pt-2">購入者</th>
           <td class="pt-2">
-            <%= link_to admin_customer_path do %>
+            <%= link_to admin_customer_path(@order.customer) do %>
              <%= @order.customer.last_name + @order.customer.first_name %>
             <% end %>
           </td>
@@ -39,7 +39,7 @@
           <td class="pt-2">
            <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
            <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-           <%= f.submit "更新", class: "btn btn-success" %>
+           <%= f.submit "更新", class: "btn btn-success offset-1" %>
            <% end %>
 
           </td>
@@ -52,26 +52,25 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="table-secondary">商品名</th>
-              <th class="table-secondary">単価(税込)</th>
-              <th class="table-secondary">数量</th>
-              <th class="table-secondary">小計</th>
-              <th class="table-secondary">製作ステータス</th>
+              <th class="table-secondary text-center">商品名</th>
+              <th class="table-secondary text-center">単価(税込)</th>
+              <th class="table-secondary text-center">数量</th>
+              <th class="table-secondary text-center">小計</th>
+              <th class="table-secondary text-center">製作ステータス</th>
             </tr>
           </thead>
           <tbody>
             <% @order.order_details.each do |order_detail| %>
             <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.price %></td>
-              <td><%= order_detail.amount %></td>
-              <td><%= order_detail.price * order_detail.amount %>円</td>
-              <td>
+              <td class = "text-center"><%= order_detail.item.name %></td>
+              <td class = "text-center"><%= order_detail.item.with_tax_price %></td>
+              <td class = "text-center"><%= order_detail.amount %></td>
+              <td class = "text-center"><%= order_detail.subtotal %>円</td>
+              <td class = "text-center">
                 <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
                 <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
-                <%#= f.select :making_status, OrderDetail.making_statuses.keys %>
                 <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
-                <%= f.submit "更新", class: "btn btn-success" %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success offset-1" %>
                 <% end %>
               </td>
             </tr>
