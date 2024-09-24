@@ -2,7 +2,7 @@
 
   <div class="row m-4">
     <div class="col-auto offset-2">
-      <h4 class="bg-info">商品詳細</h4>
+      <h4 class="px-4" style="background-color:#ECECEC;">商品詳細</h4>
     </div>
   </div>
 
@@ -13,10 +13,10 @@
   </div>
 
   <div class="item_details row">
-    <div class="item_image col-auto offset-1 mr-5">
+    <div class="item_image col-xl-auto offset-1 mr-xxl-5 col-lg-5 mr-lg-3 col-xs-10">
       <%= image_tag @item.get_item_image(400, 300) %>
     </div>
-    <div class="item_description col-6 mt-3 h5">
+    <div class="item_description col-lg-5 offset-lg-0 col-10 offset-1 mt-3 h5">
       <div class="row mb-4">
         <span class="col-3 h6">商品名</span>
         <span class="col-9"><%= @item.name %></span>
@@ -31,7 +31,7 @@
       </div>
       <div class="row mb-4">
         <span class="col-3 h6">税込価格<br>(税抜価格)</span>
-        <span class="col-9"><%= @item.with_tax_price %> (<%= @item.price %>) 円</span>
+        <span class="col-9"><%= number_with_delimiter(@item.with_tax_price) %> (<%= number_with_delimiter(@item.price) %>) 円</span>
       </div>
       <div class="row mb-4">
         <span class="col-3 h6">販売ステータス</span>
@@ -44,8 +44,8 @@
     </div>
   </div>
 
-  <div class="submit_button row mt-4">
-    <div class="col-2 offset-5">
+  <div class="submit_button row-12 mt-4">
+    <div class="col-auto d-flex justify-content-center">
       <%= link_to edit_admin_item_path(@item.id) do %>
         <button class="btn btn-success btn-lg">編集する</button>
       <% end %>
