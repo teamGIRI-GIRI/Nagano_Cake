@@ -5,4 +5,7 @@ class OrderDetail < ApplicationRecord
   
   enum making_status: {not_statable: 0, waiting_for_pdoduction: 1, making: 2, finished: 3}
 
+  def subtotal
+    item.with_tax_price * amount
+  end
 end

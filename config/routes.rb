@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" => "customers#withdraw", as: "withdraw"
 
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
-    resources :cart_items, only: [:index, :update, :destroy, :create] 
+    resources :cart_items, only: [:index, :update, :destroy, :create]
 
     #showの優先度を下げるために下に表記
     post "/orders/confirm" => "orders#confirm", as: "confirm"
