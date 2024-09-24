@@ -19,11 +19,11 @@
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-            <tr>
-              <td class="font-weight-bold"><%= cart_item.item.name %></td>
-              <td><%= number_with_delimiter(cart_item.item.with_tax_price) %></td>
-              <td><%= number_with_delimiter(cart_item.amount) %></td>
-              <td><%= number_with_delimiter(cart_item.subtotal) %></td>
+            <tr class="font-weight-bold">
+              <td class="align-middle"><%= image_tag cart_item.item.get_item_image(75, 50), class: "mr-3" %><%= cart_item.item.name %></td>
+              <td class="align-middle"><%= number_with_delimiter(cart_item.item.with_tax_price) %></td>
+              <td class="align-middle"><%= number_with_delimiter(cart_item.amount) %></td>
+              <td class="align-middle"><%= number_with_delimiter(cart_item.subtotal) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -33,15 +33,15 @@
       <table class="table table-bordered">
         <tr>
           <th class="col-6 table-secondary">送料</th>
-          <td class="col-6"><%= number_with_delimiter(@order.shipping_cost) %></td>
+          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@order.shipping_cost) %></td>
         </tr>
         <tr>
           <th class="col-6 table-secondary">商品合計</th>
-          <td class="col-6"><%= number_with_delimiter(@subtotal_sum) %></td>
+          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@subtotal_sum) %></td>
         </tr>
         <tr>
           <th class="col-6 table-secondary">請求金額</th>
-          <td class="col-6"><%= number_with_delimiter(@order.total_payment) %></td>
+          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@order.total_payment) %></td>
         </tr>
       </table>
     </div>
