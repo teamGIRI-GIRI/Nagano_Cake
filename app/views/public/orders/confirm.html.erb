@@ -2,12 +2,12 @@
 
   <div class="row m-4">
     <div class="col-auto offset-2">
-      <h4 class="px-4" style="background-color:#ECECEC;">注文情報確認</h4>
+      <h4 class="bg-info px-4">注文情報確認</h4>
     </div>
   </div>
 
   <div class="order_details row mb-5">
-    <div class="order_detail_items col-lg-6 offset-1 col-10">
+    <div class="order_detail_items col-6 offset-1">
       <table class="table table-bordered">
         <thead class="table-secondary">
           <tr>
@@ -19,29 +19,29 @@
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-            <tr class="font-weight-bold">
-              <td class="align-middle"><%= image_tag cart_item.item.get_item_image(75, 50), class: "mr-3" %><%= cart_item.item.name %></td>
-              <td class="align-middle"><%= number_with_delimiter(cart_item.item.with_tax_price) %></td>
-              <td class="align-middle"><%= number_with_delimiter(cart_item.amount) %></td>
-              <td class="align-middle"><%= number_with_delimiter(cart_item.subtotal) %></td>
+            <tr>
+              <td class="font-weight-bold"><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="order_detail_price col-lg-3 offset-lg-1 col-md-5 offset-md-6 col-7 offset-4">
+    <div class="order_detail_price col-3 offset-1">
       <table class="table table-bordered">
         <tr>
           <th class="col-6 table-secondary">送料</th>
-          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@order.shipping_cost) %></td>
+          <td class="col-6"><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <th class="col-6 table-secondary">商品合計</th>
-          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@subtotal_sum) %></td>
+          <td class="col-6"><%= @subtotal_sum %></td>
         </tr>
         <tr>
           <th class="col-6 table-secondary">請求金額</th>
-          <td class="col-6 align-middle font-weight-bold"><%= number_with_delimiter(@order.total_payment) %></td>
+          <td class="col-6"><%= @order.total_payment %></td>
         </tr>
       </table>
     </div>
@@ -70,7 +70,7 @@
         <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
         <%= f.hidden_field :total_payment, :value => @order.total_payment %>
         <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-        <%= f.submit "注文を確定する", class: "btn btn-success btn-lg col-auto offset-4 font-weight-bold" %>
+        <%= f.submit "注文を確定する", class: "btn btn-success btn-lg col-auto offset-5 font-weight-bold" %>
       <% end %>
     </div>
   </div>
