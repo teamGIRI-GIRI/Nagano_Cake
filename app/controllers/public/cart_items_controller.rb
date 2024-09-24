@@ -8,6 +8,7 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_items = current_customer.cart_items.all
+    params[:cart_item][:customer_id] = current_customer.id
     if cart_item_params[:amount] != ""
       if @cart_items.any? { |cart_item| cart_item.item_id == params[:cart_item][:item_id].to_i }
         @cart_item_already = CartItem.find_by(item_id: params[:cart_item][:item_id])
