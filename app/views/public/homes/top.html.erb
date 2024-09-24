@@ -8,7 +8,11 @@
         <div class="row m-0 p-0 mb-3 border border-dark">
           <div class="col mt-3">
             <% @genres.each do |genre| %>
-              <p><%= genre.name %></p>
+              <p>
+                <%= link_to genre_search_path(genre.id) do %>
+                  <%= genre.name %>
+                <% end %>
+              </p>
             <% end %>
           </div>
         </div>
@@ -55,3 +59,4 @@
 
   </div>
 </div>
+

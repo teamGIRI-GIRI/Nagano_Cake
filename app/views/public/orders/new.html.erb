@@ -44,7 +44,7 @@
                 <%= f.label :registered_address, "登録済住所から選択" %>
               </div>
               <div class="row pl-4">
-                <%= f.collection_select :address_id, @addresses, :id, :address_display, class: "form-select col-md-auto col-xs-10" %>
+                <%= f.collection_select :address_id, @addresses, :id, :address_display, {prompt: false}, {class: "form-control col-md-6 col-xs-10"} %>
               </div>
             </div>
             <div class="radio_button_new_address">
