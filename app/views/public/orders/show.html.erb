@@ -19,28 +19,28 @@
       <p><strong>注文情報</strong></p>
       <table class="table table-bordered">
         <tr>
-          <th bgcolor = "#f5f5f5">注文日</th>
-          <td><!-- 注文日 -->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">注文日</th>
+          <td style="text-align: left; vertical-align: middle;"><!-- 注文日 -->
             <%= @order.created_at.strftime("%Y/%-m/%-d") %>
           </td>
         </tr>
         <tr>
           <th bgcolor="#f5f5f5" style="text-align: left; vertical-align: middle;">配送先</th>
-          <td> <!-- 配送先 -->
+          <td style="text-align: left; vertical-align: middle;"> <!-- 配送先 -->
             〒<%= @order.postal_code.to_s.insert(3, "-") %><br>
             <%= @order.address %><br>
             <%= @order.name %>
           </td>
         </tr>
         <tr>
-          <th bgcolor = "#f5f5f5">支払方法</th>
-          <td><!-- 支払方法-->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">支払方法</th>
+          <td style="text-align: left; vertical-align: middle;"><!-- 支払方法-->
             <%= @order.payment_method_i18n %>
           </td>
         </tr>
         <tr>
-          <th bgcolor = "#f5f5f5">ステータス</th>
-          <td><!--ステータス-->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">ステータス</th>
+          <td style="text-align: left; vertical-align: middle;"><!--ステータス-->
             <%= @order.status %>
           </td>
         </tr>
@@ -52,20 +52,20 @@
       <p><strong>請求情報</strong></p>
       <table class="table table-bordered">
         <tr>
-          <th bgcolor = "#f5f5f5">商品合計</th>
-          <td><!-- 商品合計 -->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">商品合計</th>
+          <td style="text-align: left; vertical-align: middle;"><!-- 商品合計 -->
             <%= number_with_delimiter(@order.total_payment) %>
           </td>
         </tr>
         <tr>
-          <th bgcolor = "#f5f5f5">配送料</th>
-          <td><!-- 配送料 -->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">配送料</th>
+          <td style="text-align: left; vertical-align: middle;"><!-- 配送料 -->
             <%= number_with_delimiter(@order.shipping_cost) %>
           </td>
         </tr>
         <tr>
-          <th bgcolor = "#f5f5f5">ご請求額</th>
-          <td><!-- ご請求額-->
+          <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">ご請求額</th>
+          <td style="text-align: left; vertical-align: middle;"><!-- ご請求額-->
             <strong><%= number_with_delimiter(@order.total_payment + @order.shipping_cost) %></strong>
           </td>
         </tr>
@@ -83,25 +83,25 @@
       <table class="table table-bordered">
         <thead>
           <tr bgcolor = "#f5f5f5">
-            <th>商品</th>
-            <th>単価（税込）</th>
-            <th>個数</th>
-            <th>小計</th>
+            <th style="text-align: left; vertical-align: middle;">商品</th>
+            <th style="text-align: left; vertical-align: middle;">単価(税込)</th>
+            <th style="text-align: left; vertical-align: middle;">個数</th>
+            <th style="text-align: left; vertical-align: middle;">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
             <tr>
-              <td><!-- 商品 -->
+              <td style="text-align: left; vertical-align: middle;"><!-- 商品 -->
                 <%= order_detail.item.name %>
               </td>
-              <td><!-- 単価（税込） -->
+              <td style="text-align: left; vertical-align: middle;"><!-- 単価（税込） -->
                 <%= order_detail.item.with_tax_price %>
               </td>
-              <td><!-- 個数 -->
+              <td style="text-align: left; vertical-align: middle;"><!-- 個数 -->
                 <%= order_detail.amount %>
               </td>
-              <td><!-- 小計-->
+              <td style="text-align: left; vertical-align: middle;"><!-- 小計-->
                 <%= order_detail.subtotal %>
               </td>
             </tr>
