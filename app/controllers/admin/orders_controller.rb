@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
 
         @order_details.update( making_status: 1)
       end
-    flash[:success] = "制作ステータスを変更しました。"
+    flash[:notice] = "注文ステータスを変更しました。"
     redirect_to admin_order_path(@order)
     else
       render "show"

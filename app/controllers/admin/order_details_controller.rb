@@ -14,7 +14,7 @@ class Admin::OrderDetailsController < ApplicationController
        order.update(status: 3)
     end  
     
-    flash[:notice] = "更新に成功しました。"
+    flash[:notice] = "製作ステータスを変更しました。"
     redirect_to admin_order_path(@order_detail.order.id)
   end
   
