@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: {maximum: 100}
   validates :description, presence: true, length: {maximum: 500}
   validates :genre_id, presence: true
-  validates :price, presence: true,length: {maximum: 100}
+  validates :price, presence: true, numericality:{ with: /\A[0-9]+\z/ }
   validates :is_active, presence: true
 
   def get_item_image(width, height)
@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     end
     item_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end
