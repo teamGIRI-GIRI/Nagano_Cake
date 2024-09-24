@@ -40,7 +40,7 @@
                     <div class="index-item-name"><%= item.name %></div>
                     <% end %>
                   </tr>
-                  <div class="index-item-price">￥<%= item.price %></div>
+                  <div class="index-item-price">￥<%= number_with_delimiter(item.price) %></div>
                 </div>
               </tabel>
             <% end %>
