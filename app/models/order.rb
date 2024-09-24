@@ -4,6 +4,10 @@ class Order < ApplicationRecord
 
   enum payment_method: { credit_card: 0, transfer: 1 }
 
+  validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :address, presence: true
+  validates :name, presence: true
+
   def address_display
     "〒" + postal_code + " " + address + " " + name
   end

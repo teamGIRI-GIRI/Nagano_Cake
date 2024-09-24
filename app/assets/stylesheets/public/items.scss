@@ -9,8 +9,7 @@
 }
 // 以下、index
 .item-index-title {
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin: 20px 0;
 }
 
 .item-index-title span {
@@ -39,7 +38,7 @@
 
 .pagination {
   position: fixed;
-  bottom: 20px;
+  bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
 }

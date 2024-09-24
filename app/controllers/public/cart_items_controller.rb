@@ -58,7 +58,6 @@ class Public::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
   end
 
-
 end
 
 
