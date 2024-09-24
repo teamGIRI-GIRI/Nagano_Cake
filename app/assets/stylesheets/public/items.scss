@@ -7,6 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 // 以下、index
 .item-index-title {
   margin: 20px 0;
@@ -34,13 +35,6 @@
 
 .item-box {
   margin: 10px;
-}
-
-.pagination {
-  position: fixed;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 
@@ -87,3 +81,16 @@
   margin-left: 1rem;
   display: flex;
 }
+
+@media (max-width: 425px) {
+  .item-show-image {
+    text-align: center; /* 画像を中央寄せ */
+    margin: 0 auto; /* 自動マージンで中央寄せ */
+  }
+
+  .item-show-image img {
+    display: inline-block; /* インラインブロックで中央寄せ */
+  }
+}
+
+
