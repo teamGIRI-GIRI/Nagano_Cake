@@ -35,10 +35,10 @@
       <div class="main_content col-lg-8 offset-lg-0 col-10 offset-1">
         <div class="container">
           <div class="row">
-            <h4 class="item-index-title ml-3 mt-4 mb-4">商品一覧 <span>(全<%= @items.count %>件)</span></h4>
+            <h4 class="item-index-title ml-3 mt-4 mb-4">「<%= @word %>」の検索結果 <span>(全<%= @items.count %>件)</span></h4>
           </div>
           <div class="row d-flex justify-content-center">
-            <% @item.each do |item| %>
+            <% @items.each do |item| %>
               <%= link_to item_path(item.id), class: "col-xl-3 col-lg-4 col-md-6 col-xs-12 m-0 p-2" do %>
                 <div class="container">
                   <div class=" item_image row d-flex justify-content-center">
@@ -64,7 +64,7 @@
     </div>
 
     <div class="pagination d-flex justify-content-center mt-3">
-      <%= paginate @item %>
+      <%= paginate @items %>
     </div>
   </div>
 

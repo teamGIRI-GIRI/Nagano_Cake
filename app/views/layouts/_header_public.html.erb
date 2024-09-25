@@ -1,11 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
   <div class="container">
     <a class="navbar-brand" href="/"><%= image_tag "Nagano_Cake_logo.jpg", size: "150x50" %></a>
-    <div class="col-auto">
-      <% if customer_signed_in? %>
-        ようこそ、<%= current_customer.last_name %>さん！
-      <% end %>
-    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,43 +8,43 @@
       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <%= link_to customer_path, class: "nav-link text-dark" do %>
+            <%= link_to customer_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">マイページ</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to items_path, class: "nav-link text-dark" do %>
+            <%= link_to items_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">商品一覧</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to cart_items_path, class: "nav-link text-dark" do %>
+            <%= link_to cart_items_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">カート</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">ログアウト</button>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to about_path, class: "nav-link text-dark" do %>
+            <%= link_to about_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">About</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to items_path, class: "nav-link text-dark" do %>
+            <%= link_to items_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">商品一覧</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_registration_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">新規登録</button>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_session_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark">ログイン</button>
             <% end %>
           </li>
@@ -58,3 +53,21 @@
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-auto offset-4">
+      <% if customer_signed_in? %>
+        ようこそ、<%= current_customer.last_name %>さん！
+      <% end %>
+    </div>
+    <div class="col ml-auto flex-grow-0">
+      <%= form_with url: search_path, local: true, method: :get, class: "d-flex h-75" do |f| %>
+        <%= f.text_field :word, placeholder: "Search" %>
+        <%= button_tag type: "submit", class: "btn btn-outline-secondary" do %>
+          <i class="fa-solid fa-magnifying-glass align-top"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

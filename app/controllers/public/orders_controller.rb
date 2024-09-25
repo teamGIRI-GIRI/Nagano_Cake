@@ -1,7 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    unless cart_items.any?
+      redirect_to cart_items_path, notice: "カートに商品を追加してください。"
+    end
     @order = Order.new
     @addresses = Address.where(customer_id: current_customer.id)
   end
