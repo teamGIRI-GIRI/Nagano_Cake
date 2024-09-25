@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+
 
   # GET /resource/sign_in
   # def new
@@ -23,9 +23,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   #   protected
-  private
-  # アクティブであるかを判断するメソッド
-  def customer_state
+
+  before_action :customer_state, only: [:create]
+
+private
+# アクティブであるかを判断するメソッド
+def customer_state
   # 【処理内容1】 入力されたemailからアカウントを1件取得
   customer = Customer.find_by(email: params[:customer][:email])
   # 【処理内容2】 アカウントを取得できなかった場合、このメソッドを終了する
@@ -34,7 +37,9 @@ class Public::SessionsController < Devise::SessionsController
   return unless customer.valid_password?(params[:customer][:password])
 
   # 【処理内容4】 アクティブでない会員に対する処理
-
+  if !customer.is_active
+    redirect_to new_registration_path(resource_name)
   end
+end
 
 end
