@@ -6,8 +6,8 @@
   </div>
 </div>
 
-<div class="container"><!--ジャンル画面のエラーメッセージ-->
-  <div class="row">
+<div class="container">
+  <div class="row"><!--ジャンル画面のエラーメッセージ-->
     <div class="col">
       <% if @genre.errors.any? %>
         <div class="error-message">
@@ -19,6 +19,17 @@
     </div>
   </div>
 
+  <div class="row"><!--ジャンル画面のフラッシュメッセージ-->
+    <div class="col">
+      <% if flash[:success] %>
+        <div class="success-message">
+          <span style="color: blue;"><!--エラーメッセージの青字表示-->
+            <%= flash[:success] %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
 <br>
 
