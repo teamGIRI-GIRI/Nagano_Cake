@@ -21,5 +21,10 @@ class Customer < ApplicationRecord
   def address_display
     "〒" + postal_code + " " + address + " " + last_name + " " + first_name
   end
+  
+  # def active_for_authentication?
+  #   super && (invalid == true)
+  # end
+  
 end
 

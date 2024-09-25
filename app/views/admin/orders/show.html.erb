@@ -70,7 +70,7 @@
             <td class = "text-center"><%= order_detail.item.name %></td>
             <td class = "text-center"><%= number_with_delimiter(order_detail.item.with_tax_price) %></td>
             <td class = "text-center"><%= order_detail.amount %></td>
-            <td class = "text-center"><%=  number_with_delimiter(order_detail.subtotal) %>円</td>
+            <td class = "text-center"><%= number_with_delimiter(order_detail.subtotal) %>円</td>
             <td class = "text-center">
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
               <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
