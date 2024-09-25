@@ -1,23 +1,36 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
 <div class="container-fruid">
   <div class="row mt-4">
-    <div class="genre_search col-lg-3 offset-lg-1 col-10 offset-1">
-      <div class="col-xl-9 offset-xl-2 col-lg-10 offset-lg-1">
-        <div class="row m-0 py-1 border border-dark justify-content-center">
+    <div class="genre_search col-lg-3 offset-lg-0 col-10 offset-1">
+      <div class="col-xl-8 offset-xl-4 col-lg-10 offset-lg-1">
+        <div class="row m-0 mt-2 py-1 border border-dark justify-content-center">
           <p class="m-0">ジャンル検索</p>
         </div>
         <div class="row m-0 p-0 mb-3 border border-dark">
           <div class="col mt-3">
             <% @genres.each do |genre| %>
-              <p><%= genre.name %></p>
+              <p>
+                <%= link_to genre_search_path(genre.id) do %>
+                  <%= genre.name %>
+                <% end %>
+              </p>
             <% end %>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="main_content col-lg-8 offset-lg-0 col-10 offset-1">
+    <div class="main_content col-lg-8 offset-lg-0 col-10 offset-1 ml-4">
       <div class="top_image row mx-xl-4 mx-xs-2">
-        <div class="card">
+        <div class="card ml-3">
         <%= image_tag "top_page_image.jpg", size: "700x350", class: "card-img" %>
         <div class="card-img-overlay d-flex">
           <div class="m-auto p-3" style="background-color: rgb(0 0 0  / 0.3)">
@@ -37,21 +50,32 @@
         <div class="row d-flex justify-content-center">
           <% @items.each do |item| %>
             <%= link_to item_path(item.id), class: "col-xl-3 col-lg-4 col-md-6 col-xs-12 m-0 p-2" do %>
-              <div class="item_image row">
-                <%= image_tag item.get_item_image(200, 150)  %>
+              <div class="container">
+                <div class=" item_image row d-flex justify-content-center">
+                  <%= image_tag item.get_item_image(220, 165), class: "d-block"  %>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div style="width:220px;">
+                    <p class="index-item-name mb-0 mt-2"><%= item.name %></p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div style="width:220px">
+                    <p class="index-item-price mb-0">￥<%= number_with_delimiter(item.with_tax_price) %></p>
+                  </div>
+                </div>
               </div>
-              <p class="mb-0"><%= item.name %></p>
-              <p class="mb-0">￥<%= number_with_delimiter(item.with_tax_price) %></p>
             <% end %>
           <% end %>
         </div>
       </div>
       <div class="row w-100 mb-2">
         <div class="col-auto ml-auto">
-          <%= link_to items_path do %>全ての商品を見る><% end %>
+          <%= link_to items_path, class: "font-weight-bold" do %>全ての商品を見る><% end %>
         </div>
       </div>
     </div>
 
   </div>
 </div>
+
