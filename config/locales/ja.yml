@@ -18,6 +18,18 @@ ja:
         shipped: "発送済"
     
   activerecord:
+    attributes:
+      customer:
+        last_name: "氏名"
+        first_name: "氏名"
+        last_name_kana: "フリガナ"
+        first_name_kana: "フリガナ"
+        address: "住所"
+        tellphone_number: "電話番号"
+        postal_code: "郵便番号"
+        email: "メールアドレス"
+
+
     errors:
       messages:
         record_invalid: '%{errors}'
@@ -34,7 +46,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -60,7 +72,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
