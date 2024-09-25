@@ -1,18 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3 offset-1">
-
-      <br>
-      <br>
-      <h5 style="background-color: #ECECEC;">　ジャンル一覧・追加　</h5>
-      <br>
-      <br>
-
+<div class="container-fruid">
+  <div class="row m-4">
+    <div class="col-auto offset-2 d-inline-block my-2">
+      <h4 class="px-4" style="background-color:#ECECEC;">ジャンル一覧・追加</h4>
     </div>
   </div>
 </div>
 
 <div class="container">
+  <div class="row"><!--ジャンル画面のエラーメッセージ-->
+    <div class="col">
+      <% if @genre.errors.any? %>
+        <div class="error-message">
+          <span style="color: red; font-weight: bold;"><!--エラーメッセージの赤字、太字表示-->
+            <%= t('activerecord.errors.messages.record_invalid', errors: "ジャンル名を入力してください") %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row"><!--ジャンル画面のフラッシュメッセージ-->
+    <div class="col">
+      <% if flash[:success] %>
+        <div class="success-message">
+          <span style="color: #32cd32;"><!--エラーメッセージの青字表示-->
+            <%= flash[:success] %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<br>
+
+
   <div class="row">
     <div class="col-2">
       <h6><strong>ジャンル名</strong></h6>
@@ -20,8 +41,10 @@
     <!-- ジャンル登録 -->
     <div class="col-10">
       <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
-        <%= f.text_field :name, placeholder: "ジャンル名" %>　　　
-        <%= f.submit '　新規登録　'.html_safe, class: "btn btn-success", style: "font-weight: bold" %>
+        <div class="form-inline"> <!-- フォーム要素を横並びに配置 -->
+          <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control mr-2", style: "max-width: 300px;" %>
+          <%= f.submit '　新規登録　', class: "btn btn-success", style: "font-weight: bold;" %>
+        </div>
       <% end %>
       <br>
       <br>

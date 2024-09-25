@@ -7,20 +7,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-    <div class= "item-show-container">
+    <div class= "container">
       <div class = "row">
-        <div class = "col-md-5">
-          <%= image_tag @item.get_item_image(500, 350) %>
+        <div class="col-sm-5 offset-1">
+          <div class="item-show-image">
+            <%= image_tag @item.get_item_image(500, 350), style: "max-width: 90%;" %>
+          </div>
         </div>
-        <div class='col-md-6 offset-md-1'>
+        <div class='col-md-5'>
           <div class="show-item-name"><%= @item.name %></div>
           <div class="item-description"><%= @item.description %></div>
-          <div class="show-item-price">￥<%= @item.price %></div>
+          <div class="show-item-price"><span>￥<%= number_with_delimiter(@item.price) %></span>(税込)</div>
           <%= form_with model:@cart_item, url: cart_items_path do |f| %>
-            <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
-            <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.submit 'カートに入れる', class: "btn btn-success"%>
+            <div style="display: flex; align-items: center;">
+              <div style="margin-right: 20px;">
+              <%= f.select :amount,  [*(1..10)], include_blank: "選択して下さい" %>
+              </div>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <div>
+                <%= f.submit 'カートに入れる', class: "btn btn-lg btn-success"%>
+              </div>
+            </div>
           <% end %>
+          <div class="item-show-alert">
+            <%= flash[:alert] %>
           </div>
         </div>
       </div>

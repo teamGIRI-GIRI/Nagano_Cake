@@ -1,38 +1,58 @@
+<div class="row m-4">
+  <div class="col-auto offset-2">
+    <h4 class="px-4" style="background-color:#ECECEC;">配送先登録・一覧</h4>
+  </div>
+</div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-xs-3 offset-1">
-
-      <br>
-      <br>
-      <h5 style="background-color: #ECECEC;">　配送先登録／一覧　</h5>
-      <br>
-      <br>
-
+  <div class="row"><!--配送先画面のエラーメッセージ-->
+    <div class="col">
+      <% if @address.errors.any? %>
+        <div class="error-message">
+          <span style="color: red; font-weight: bold;"><!--エラーメッセージの赤字、太字表示-->
+            <%= t('activerecord.errors.messages.record_invalid', errors: "すべて入力してください") %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row"><!--配送先画面のフラッシュメッセージ-->
+    <div class="col">
+      <% if flash[:success] %>
+        <div class="success-message">
+          <span style="color: #32cd32;"><!--エラーメッセージの青字表示-->
+            <%= flash[:success] %>
+          </span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
 <!-- 配送先登録 -->
 <div class="container">
-  <div class="row">
 
     <%= form_with model: @address, url: '/addresses', method: :post do |f| %>
-      <div class="col">
-        郵便番号(ハイフンなし)
-        <%= f.text_field :postal_code, placeholder: "0000000" %>
-      </div>
-      <div class="col">
-        住所
-        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-      </div>
-      <div class="col">
-        宛名
-        <%= f.text_field :name, placeholder: "令和太郎" %>
-        <%= f.submit '　新規登録　'.html_safe, class: "btn btn-success", style: "font-weight: bold" %>
-      </div>
+      <table class="table table-borderless table-sm">
+        <tr>
+          <th scope="col" style="width: 25%;",style="text-align: left; vertical-align: middle;">郵便番号(ハイフンなし)</th>
+          <td style="text-align: left; vertical-align: middle;"><%= f.text_field :postal_code, placeholder: "0000000" %></td>
+        </tr>
+        <tr>
+          <th scope="col" style="text-align: left; vertical-align: middle;">住所</th>
+          <td colspan="1" style="text-align: left; vertical-align: middle;">
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 100%;" %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" style="text-align: left; vertical-align: middle;">宛名</th>
+          <td style="text-align: left; vertical-align: middle;"><%= f.text_field :name, placeholder: "令和太郎" %></td>
+          <td><%= f.submit '　　新規登録　　'.html_safe, class: "btn btn-success", style: "font-weight: bold; height: 30px; padding: 3px 6px; font-size: 14px;" %></td>
+        </tr>
+      </table>
     <% end %>
 
-  </div>
 </div>
 
 <!-- 配送先一覧 -->
@@ -44,25 +64,25 @@
       <table class="table table-bordered">
         <thead bgcolor = "#f5f5f5">
           <tr>
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th></th>
+            <th style="text-align: left; vertical-align: middle;">郵便番号</th>
+            <th style="text-align: left; vertical-align: middle;">住所</th>
+            <th style="text-align: left; vertical-align: middle;">宛名</th>
+            <th></th><!--btn-->
           </tr>
         </thead>
         <tbody>
           <% @addresses.each do |address| %>
             <tr>
-              <td>
+              <td style="text-align: left; vertical-align: middle;"><!--郵便番号-->
                 <%= address.postal_code.to_s.insert(3, "-") %>
               </td>
-              <td>
+              <td style="text-align: left; vertical-align: middle;"><!--住所-->
                 <%= address.address %>
               </td>
-              <td>
+              <td style="text-align: left; vertical-align: middle;"><!--宛名-->
                 <%= address.name %>
               </td>
-              <td style="text-align: center; vertical-align: middle;">
+              <td style="text-align: center; vertical-align: middle;"><!--btn-->
                 <%= link_to '編集する'.html_safe, edit_address_path(address), class: "btn btn-success btn-sm", style: "font-weight: bold" %>
                 <%= link_to '削除する', address, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm", style: "font-weight: bold" %>
               </td>

@@ -1,18 +1,15 @@
   <div class="container">
     <div class="row">
-      <div class="col-xs-3 offset-1">
+      <div class="offset-1">
         <br>
         <h4 class="customer-index-title", style="background-color: #ECECEC;">　会員一覧　</h4>
-        <br>
       </div>
     </div>
   </div>
 
-
-
   <div class= "container">
     <div class = "row">
-      <div class = "col-sm-10 px-sm-0 mx-auto">
+      <div class = "col-10 px-sm-0 mx-auto">
         <table class="table">
           <thead>
             <tr>
@@ -48,18 +45,6 @@
     </div>
   </div>
 
-
-
-
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-    <div class="pagination">
-      <%= paginate @customers %>
-    </div>
-</html>
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @customers %>
+  </div>

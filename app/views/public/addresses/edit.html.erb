@@ -1,36 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3 offset-1">
-
-      <br>
-      <br>
-      <h5 style="background-color: #ECECEC;">　配送先編集　</h5>
-      <br>
-      <br>
-
-    </div>
+<div class="row m-4">
+  <div class="col-auto offset-2">
+    <h4 class="px-4" style="background-color:#ECECEC;">配送先編集</h4>
   </div>
 </div>
 
 <!-- 配送先編集 -->
 <div class="container">
-  <div class="row">
 
     <%= form_with model: @address, local: true do |f| %>
-      <div class="col">
-        郵便番号(ハイフンなし)
-        <%= f.text_field :postal_code, autofocus: true %>
-      </div>
-      <div class="col">
-        住所
-        <%= f.text_field :address, autofocus: true %>
-      </div>
-      <div class="col">
-        宛名
-        <%= f.text_field :name, autofocus: true %>
-        <%= f.submit '　変更内容を保存　'.html_safe, class: "btn btn-success", style: "font-weight: bold" %>
-      </div>
+      <table class="table table-borderless table-sm">
+        <tr>
+          <th scope="col" style="width: 25%;",style="text-align: left; vertical-align: middle;">郵便番号(ハイフンなし)</th>
+          <td style="text-align: left; vertical-align: middle;"><%= f.text_field :postal_code, autofocus: true %></td>
+        </tr>
+        <tr>
+          <th scope="col" style="text-align: left; vertical-align: middle;">住所</th>
+          <td colspan="1" style="text-align: left; vertical-align: middle;">
+            <%= f.text_field :address, autofocus: true, style: "width: 100%;" %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" style="text-align: left; vertical-align: middle;">宛名</th>
+          <td style="text-align: left; vertical-align: middle;"><%= f.text_field :name, autofocus: true %></td>
+          <td><%= f.submit '　変更内容を保存　'.html_safe, class: "btn btn-success", style: "font-weight: bold; height: 30px; padding: 3px 6px; font-size: 14px;" %></td>
+        </tr>
+      </table>
     <% end %>
 
-  </div>
 </div>
