@@ -12,12 +12,12 @@
       <div class="genre_search col-lg-3 offset-lg-0 col-10 offset-1">
         <div class="container">
           <div class="row">
-            <div class="col-8 offset-2 mt-4">
-              <div class="row m-0 py-1 border border-dark justify-content-center">
+            <div class="col-8 offset-2 mt-4 font-weight-bold">
+              <div class="row m-0 py-1 border border-dark border-bottom-0 justify-content-center">
                 <p class="m-0">ジャンル検索</p>
               </div>
               <div class="row m-0 p-0 mb-3 border border-dark">
-                <div class="col mt-3">
+                <div class="col mt-3 d-block">
                   <% @genres.each do |genre| %>
                     <p>
                       <%= link_to genre_search_path(genre.id) do %>
