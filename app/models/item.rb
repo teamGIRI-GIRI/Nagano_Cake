@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :description, presence: true, length: {maximum: 500}
   validates :genre_id, presence: true
   validates :price, presence: true, numericality:{ with: /\A[0-9]+\z/ }
-  validates :is_active, presence: true
+  validates :is_active, inclusion: {in: [true, false]}
 
   def get_item_image(width, height)
     unless item_image.attached?

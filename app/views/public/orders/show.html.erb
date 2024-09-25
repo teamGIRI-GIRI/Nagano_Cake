@@ -33,7 +33,7 @@
         <tr>
           <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">ステータス</th>
           <td style="text-align: left; vertical-align: middle;"><!--ステータス-->
-            <%= @order.status %>
+            <%= @order.status_i18n %>
           </td>
         </tr>
       </table>
@@ -46,7 +46,7 @@
         <tr>
           <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">商品合計</th>
           <td style="text-align: left; vertical-align: middle;"><!-- 商品合計 -->
-            <%= number_with_delimiter(@order.total_payment) %>
+            <%= number_with_delimiter(@order.total_payment - @order.shipping_cost) %>
           </td>
         </tr>
         <tr>
@@ -58,7 +58,7 @@
         <tr>
           <th bgcolor = "#f5f5f5" style="text-align: left; vertical-align: middle;">ご請求額</th>
           <td style="text-align: left; vertical-align: middle;"><!-- ご請求額-->
-            <strong><%= number_with_delimiter(@order.total_payment + @order.shipping_cost) %></strong>
+            <strong><%= number_with_delimiter(@order.total_payment) %></strong>
           </td>
         </tr>
       </table>
@@ -88,7 +88,7 @@
                 <%= order_detail.item.name %>
               </td>
               <td style="text-align: left; vertical-align: middle;"><!-- 単価（税込） -->
-                <%= order_detail.item.with_tax_price %>
+                <%= order_detail.price %>
               </td>
               <td style="text-align: left; vertical-align: middle;"><!-- 個数 -->
                 <%= order_detail.amount %>

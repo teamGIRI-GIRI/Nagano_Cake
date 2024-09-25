@@ -23,7 +23,7 @@
     <div class="col">
       <% if flash[:success] %>
         <div class="success-message">
-          <span style="color: blue;"><!--エラーメッセージの青字表示-->
+          <span style="color: #32cd32;"><!--エラーメッセージの青字表示-->
             <%= flash[:success] %>
           </span>
         </div>
@@ -55,14 +55,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      
+
       <!--　ジャンル一覧のテーブル　-->
       <table class = "table">
         <thead style="background-color: #ECECEC;">
           <th>ジャンル</th>
           <th></th>
         </thead>
-        
+
         <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
@@ -84,7 +84,7 @@
           }
         </style>
       </table>
-      
+
     </div>
   </div>
 </div>
