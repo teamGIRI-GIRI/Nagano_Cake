@@ -9,13 +9,13 @@
 
 <div class="container-fruid">
   <div class="row mt-4">
-    <div class="genre_search col-lg-3 offset-lg-0 col-10 offset-1">
-      <div class="col-xl-8 offset-xl-4 col-lg-10 offset-lg-1">
-        <div class="row m-0 mt-2 py-1 border border-dark justify-content-center">
+    <div class="genre_search col-lg-3 offset-lg-0 col-8 offset-2">
+      <div class="col-xl-8 offset-xl-4 col-lg-10 offset-lg-1 font-weight-bold">
+        <div class="row m-0 mt-2 py-1 border border-dark border-bottom-0 justify-content-center">
           <p class="m-0">ジャンル検索</p>
         </div>
         <div class="row m-0 p-0 mb-3 border border-dark">
-          <div class="col mt-3">
+          <div class="col mt-3 d-block">
             <% @genres.each do |genre| %>
               <p>
                 <%= link_to genre_search_path(genre.id) do %>
@@ -28,8 +28,8 @@
       </div>
     </div>
 
-    <div class="main_content col-lg-8 offset-lg-0 col-10 offset-1 ml-4">
-      <div class="top_image row mx-xl-4 mx-xs-2">
+    <div class="main_content col-lg-8 col-10  ml-4">
+      <div class="top_image row mx-xl-4 mx-xs-2 offset-lg-0 offset-sm-1">
         <div class="card ml-3">
         <%= image_tag "top_page_image.jpg", size: "700x350", class: "card-img" %>
         <div class="card-img-overlay d-flex">
