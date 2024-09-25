@@ -1,9 +1,9 @@
 <div class="container">
- <h4 class="col-3 table-secondary text-center">マイページ</h4><br>
+ <h4 class="col-3 table-secondary text-center mt-5">マイページ</h4><br>
 
   <div class = "row">
     <div class="col-lg-1 offset-lg-1">登録情報</div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 mb-3">
       <%= link_to "編集する", edit_customer_path, class: "btn btn-success" %>
     </div>
   </div>
@@ -53,7 +53,3 @@
     </div>
   </div>
 </div>
-
-
-
-    <%= link_to"log_out", destroy_customer_session_path, method: :delete %>

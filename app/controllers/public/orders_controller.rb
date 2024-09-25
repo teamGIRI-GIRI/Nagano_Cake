@@ -1,7 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    unless cart_items.any?
+      redirect_to cart_items_path, notice: "カートに商品を追加してください。"
+    end
     @order = Order.new
     @addresses = Address.where(customer_id: current_customer.id)
   end
@@ -31,18 +35,23 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.customer_id = current_customer.id
-    order.save
-    cart_items = CartItem.where(customer_id: current_customer.id)
-    cart_items.each do |cart_item|
-      order_detail = OrderDetail.new
-      order_detail.order_id = order.id
-      order_detail.item_id = cart_item.item_id
-      order_detail.price = cart_item.subtotal
-      order_detail.amount = cart_item.amount
-      order_detail.save
+    if order.save
+      cart_items = CartItem.where(customer_id: current_customer.id)
+      cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.price = cart_item.subtotal
+        order_detail.amount = cart_item.amount
+        order_detail.save
+      end
+      cart_items.destroy_all
+      redirect_to thanks_path
+    else
+      @order = Order.new
+      @addresses = Address.where(customer_id: current_customer.id)
+      render 'new'
     end
-    cart_items.destroy_all
-    redirect_to thanks_path
   end
 
   def thanks
