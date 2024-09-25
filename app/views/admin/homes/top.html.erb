@@ -1,18 +1,19 @@
 <div class= "container">
+  <div class = "text-success"><%= flash[:notice] %></div>
   <div class="row mt-5">
     <div class="col-auto">
-      <h4 class="px-4" style="background-color:#ECECEC;">注文履歴一覧</h4>
+      <h4 class="px-4" style="background-color:#e4d2d8;">注文履歴一覧</h4>
     </div>
   </div>
-  
-  <div class="row mt-5">
+
+  <div class="row mx-auto mt-5">
     <table class="table table-bordered text-center">
       <thead>
         <tr>
-          <th class="table-active">購入日</th>
-          <th class="table-active">購入者</th>
-          <th class="table-active">注文個数</th>
-          <th class="table-active">注文ステータス</th>
+          <th class="col-2 table-primary">購入日</th>
+          <th class="col-2 table-primary">購入者</th>
+          <th class="col-1 table-primary">注文個数</th>
+          <th class="col-2 table-primary">注文ステータス</th>
         </tr>
       </thead>
       <tbody>
