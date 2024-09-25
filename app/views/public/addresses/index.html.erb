@@ -4,12 +4,37 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row"><!--配送先画面のエラーメッセージ-->
+    <div class="col">
+      <% if @address.errors.any? %>
+        <div class="error-message">
+          <span style="color: red; font-weight: bold;"><!--エラーメッセージの赤字、太字表示-->
+            <%= t('activerecord.errors.messages.record_invalid', errors: "すべて入力してください") %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row"><!--配送先画面のフラッシュメッセージ-->
+    <div class="col">
+      <% if flash[:success] %>
+        <div class="success-message">
+          <span style="color: blue;"><!--エラーメッセージの青字表示-->
+            <%= flash[:success] %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <!-- 配送先登録 -->
 <div class="container">
-  <div class="row">
-    
-    <table class="table table-borderless table-sm">
-      <%= form_with model: @address, url: '/addresses', method: :post do |f| %>
+
+    <%= form_with model: @address, url: '/addresses', method: :post do |f| %>
+      <table class="table table-borderless table-sm">
         <tr>
           <th scope="col" style="width: 25%;",style="text-align: left; vertical-align: middle;">郵便番号(ハイフンなし)</th>
           <td style="text-align: left; vertical-align: middle;"><%= f.text_field :postal_code, placeholder: "0000000" %></td>
@@ -25,10 +50,9 @@
           <td style="text-align: left; vertical-align: middle;"><%= f.text_field :name, placeholder: "令和太郎" %></td>
           <td><%= f.submit '　　新規登録　　'.html_safe, class: "btn btn-success", style: "font-weight: bold; height: 30px; padding: 3px 6px; font-size: 14px;" %></td>
         </tr>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
 
-  </div>
 </div>
 
 <!-- 配送先一覧 -->
