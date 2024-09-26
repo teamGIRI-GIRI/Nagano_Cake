@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+    
   def index
     @customer = Customer.find(params[:customer_id])
     @orders = @customer.orders
@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
 
         @order_details.update( making_status: 1)
       end
-    flash[:order] = "注文ステータスを変更しました。"
+    flash[:notice] = "注文ステータスを変更しました。"
     redirect_to admin_order_path(@order)
     else
       render "show"
