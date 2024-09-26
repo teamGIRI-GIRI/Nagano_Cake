@@ -63,7 +63,7 @@
             <% @order.order_details.each do |order_detail| %>
             <tr>
               <td class = "text-center"><%= order_detail.item.name %></td>
-              <td class = "text-center"><%= order_detail.item.with_tax_price %></td>
+              <td class = "text-center"><%= order_detail.price %></td>
               <td class = "text-center"><%= order_detail.amount %></td>
               <td class = "text-center"><%= order_detail.subtotal %>円</td>
               <td class = "text-center">
@@ -83,7 +83,7 @@
           <tr>
             <th class = "h5 p-3"><strong>商品合計</strong></th>
             <td class = "h5 p-3">
-              <%= @order.total_payment %>円
+              <%= @order.total_payment - @order.shipping_cost %>円
             </td>
           </tr>
 
@@ -97,7 +97,7 @@
           <tr>
             <th class = "h5 p-3"><strong>請求金額合計</strong></th>
             <td class = "h5 p-3">
-              <strong><%= @order.total_payment + @order.shipping_cost %>円</strong>
+              <strong><%= @order.total_payment %>円</strong>
             </td>
           </tr>
         </table>
