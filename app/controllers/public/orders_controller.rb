@@ -68,8 +68,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
-    @orders = Order.page(params[:page]).per(10).order(created_at: :desc)
+    @orders = current_customer.orders.order(created_at: :desc).page(params[:page]).per(10) #カレントカスタマーかつ、日付降順
   end
 
   def show
