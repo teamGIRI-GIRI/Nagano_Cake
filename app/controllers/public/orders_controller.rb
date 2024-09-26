@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new
         order_detail.order_id = order.id
         order_detail.item_id = cart_item.item_id
-        order_detail.price = cart_item.subtotal
+        order_detail.price = cart_item.item.with_tax_price
         order_detail.amount = cart_item.amount
         order_detail.save
       end
