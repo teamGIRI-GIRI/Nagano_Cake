@@ -17,6 +17,7 @@ ja:
         ready_to_ship: "発送準備中"
         shipped: "発送済"
     
+    
   activerecord:
     attributes:
       customer:
