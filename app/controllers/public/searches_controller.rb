@@ -9,5 +9,6 @@ class Public::SearchesController < ApplicationController
     @genres = Genre.all
     @genre = Genre.find(params[:id])
     @items = Item.where(genre_id: params[:id]).page(params[:page]).per(8)
+    @total_count = Item.where(genre_id: params[:id]).count
   end
 end

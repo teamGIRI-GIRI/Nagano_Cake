@@ -35,7 +35,7 @@
       <div class="main_content col-lg-8 offset-lg-0 col-10 offset-1">
         <div class="container">
           <div class="row">
-            <h4 class="item-index-title ml-3 mt-4 mb-4"><%= @genre.name %>一覧 <span>(全<%= @items.count %>件)</span></h4>
+            <h4 class="item-index-title ml-3 mt-4 mb-4"><%= @genre.name %>一覧 <span>(全<%= @total_count %>件)</span></h4>
           </div>
           <div class="row d-flex justify-content-center">
             <% @items.each do |item| %>
