@@ -1,74 +1,56 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 // 以下、index
 .item-index-title {
   font-weight: bold;
   font-size: 30px;
 }
-
 .item-index-title span {
   font-weight: bold;
   font-size: 25px;
 }
-
 .index-item-name {
   font-size: 18px;
   font-weight: bold;
 }
-
 .index-item-price {
   font-size: 20px;
   font-weight: bold;
 }
-
-
-
 // 以下、show
 .item-show-alert {
   font-size: 15px;
   font-weight: bold;
   color: red;
 }
-
 .show-item-name {
   font-size: 30px;
   font-weight: bold;
 }
-
 .item-description {
   font-size: 22px;
   font-weight: bold;
 }
-
-
 .show-item-price span {
   font-size: 30px;
   font-weight: bold;
 }
-
-
-
 @media (max-width: 425px) {
   .item-show-image {
     text-align: center; /* 画像を中央寄せ */
     margin: 0 auto; /* 自動マージンで中央寄せ */
   }
-
   .item-show-image img {
     display: inline-block; /* インラインブロックで中央寄せ */
   }
 }
-
 @media screen and (max-width:768px) {
   .item-content {
-
   }
 }

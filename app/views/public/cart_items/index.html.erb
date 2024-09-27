@@ -27,6 +27,10 @@
       <div class="col-3 offset-10">
         <%= link_to "カートを空にする", destroy_all_path, method: :delete, data: { confirm: 'カート内の商品を全て削除しますか？' }, class: "btn btn-sm btn-danger" %>
       </div>
+      <div class="message text-danger">
+        <%= notice %>
+      </div>
+
     </div>
     <br>
     </div>
@@ -55,14 +59,14 @@
               <%= image_tag cart_item.item.get_item_image(80, 50) %>
               <strong><%= cart_item.item.name %></strong>
             </td>
-            <td><strong>￥<%= number_with_delimiter(cart_item.item.with_tax_price) %></strong></td>
+            <td><strong><%= number_with_delimiter(cart_item.item.with_tax_price) %></strong></td>
             <td style="text-align: center">
               <%= form_with model:cart_item, url: cart_item_path(cart_item), method: :put do |f| %>
               <%= f.select :amount,  [*(1..10)] %>
               <%= f.submit '変更', class: "btn btn-success"%>
               <% end %>
             </td>
-            <td><strong>￥<%= number_with_delimiter(cart_item.subtotal) %></strong></td>
+            <td><strong><%= number_with_delimiter(cart_item.subtotal) %></strong></td>
             <td style="text-align: center">
               <%= link_to "削除する", cart_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
             </td>
@@ -92,7 +96,7 @@
             </div>
           </td>
           <td>
-            <strong>¥<%= @total.round.to_s(:delimited)%></strong>
+            <strong><%= @total.round.to_s(:delimited)%></strong>
           </td>
         </tr>
       </table>
